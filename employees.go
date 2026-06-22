@@ -43,7 +43,6 @@ MainLoop:
 			for i := 0; i < size; i++ {
 				if empls[i] == nil {
 					empls[i] = empl
-					// Сразу сообщаем пользователю, какой ID присвоен сотруднику
 					fmt.Printf("Сотрудник успешно добавлен! Присвоен ID: %d\n", i)
 					added = true
 					break
@@ -58,16 +57,14 @@ MainLoop:
 			var idToRemove int
 			fmt.Scanf("%d\n", &idToRemove)
 
-			// Валидация: проверяем, что введенный ID входит в границы массива
 			if idToRemove < 0 || idToRemove >= size {
 				fmt.Printf("Ошибка: ID должен быть в диапазоне от 0 до %d.\n", size-1)
 				continue
 			}
 
-			// Проверяем, существует ли сотрудник в этой ячейке
 			if empls[idToRemove] != nil {
 				name := empls[idToRemove].Name
-				empls[idToRemove] = nil // Освобождаем ячейку
+				empls[idToRemove] = nil
 				fmt.Printf("Сотрудник %s (ID: %d) успешно удален.\n", name, idToRemove)
 			} else {
 				fmt.Printf("Сотрудник с ID %d не найден (ячейка уже пуста).\n", idToRemove)
@@ -79,7 +76,6 @@ MainLoop:
 			for i := 0; i < size; i++ {
 				if empls[i] != nil {
 					hasEmployees = true
-					// Добавили вывод ID в начале строки
 					fmt.Printf("ID: %d | Имя: %s | Возраст: %d | Позиция: %s | Зарплата: %d\n",
 						i, empls[i].Name, empls[i].Age, empls[i].Position, empls[i].Salary)
 				}
